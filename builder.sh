@@ -37,8 +37,8 @@ install_go_scr() {
     if [ "$status" == "SCRIPT" ]
     then
         PATH="$PATH:$GO_PATH/go/bin"
-        singboxPath=$GO_PATH/go/bin/sing-box
     fi
+    singboxPath=$GO_PATH/go/bin/sing-box
 }
 
 get_singbox_version() {
@@ -108,7 +108,7 @@ check_update() {
         chmod +x "$dir/builder.sh"
     else
         latest_scr_VERSION=$(curl -sL https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/build_version.txt)
-        local_scr_VERSION=1.0.0
+        local_scr_VERSION=1.0.1
         if [ "$latest_scr_VERSION" != "$local_scr_VERSION" ]
         then
             rm -rf "$dir/builder.sh"
