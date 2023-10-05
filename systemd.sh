@@ -56,15 +56,15 @@ check_update() {
     dir=$(pwd)
     if [ ! -f "$dir/systemd.sh" ]
     then
-        curl -o "$dir/systemd.sh" https://raw.githubusercontent.com/AsenHu/rootless_caddy_manager/main/systemd.sh
+        curl -o "$dir/systemd.sh" https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/systemd.sh
         chmod +x "$dir/systemd.sh"
     else
-        latest_scr_VERSION=$(curl -sL https://raw.githubusercontent.com/AsenHu/rootless_caddy_manager/main/systemd_version.txt)
+        latest_scr_VERSION=$(curl -sL https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/systemd_version.txt)
         local_scr_VERSION=1.0.0
         if [ "$latest_scr_VERSION" != "$local_scr_VERSION" ]
         then
             rm -rf "$dir/systemd.sh"
-            curl -o "$dir/systemd.sh" https://raw.githubusercontent.com/AsenHu/rootless_caddy_manager/main/systemd.sh
+            curl -o "$dir/systemd.sh" https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/systemd.sh
             chmod +x "$dir/systemd.sh"
         fi
     fi
