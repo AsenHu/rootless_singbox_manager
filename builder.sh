@@ -99,7 +99,27 @@ save_sing_version() {
     fi
 }
 
+check_update() {
+    local dir latest_scr_VERSION local_scr_VERSION
+    dir=$(pwd)
+    if [ ! -f "$dir/builder.sh" ]
+    then
+        curl -o "$dir/builder.sh" https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/builder.sh
+        chmod +x "$dir/builder.sh"
+    else
+        latest_scr_VERSION=$(curl -sL https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/build_version.txt)
+        local_scr_VERSION=1.0.0
+        if [ "$latest_scr_VERSION" != "$local_scr_VERSION" ]
+        then
+            rm -rf "$dir/builder.sh"
+            curl -o "$dir/builder.sh" https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/builder.sh
+            chmod +x "$dir/builder.sh"
+        fi
+    fi
+}
+
 main() {
+    check_update
     install_go_scr
     singbox_update "$branches" "$tags"
 }
