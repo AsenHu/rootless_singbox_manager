@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 mkdir -p tmp
-touch ./singboxLocaLatestVersion
-touch ./singboxLocalDevNextVersion
+touch ./tmp/singboxLocaLatestVersion
+touch ./tmp/singboxLocalDevNextVersion
 
 branches=latest
 tags=with_quic,with_grpc,with_dhcp,with_wireguard,with_ech,with_utls,with_reality_server,with_acme,with_clash_api,with_v2ray_api,with_gvisor
@@ -53,7 +53,7 @@ get_singbox_version() {
             fi
             echo "$sing_latest_version"
         }
-        singLocalVer=$(<./singboxLocaLatestVersion)
+        singLocalVer=$(<./tmp/singboxLocaLatestVersion)
     fi
     if [ "$branches" == dev-next ]
     then
@@ -64,7 +64,7 @@ get_singbox_version() {
             fi
             echo "$sing_devNext_version"
         }
-        singLocalVer=$(<./singboxLocalDevNextVersion)
+        singLocalVer=$(<./tmp/singboxLocalDevNextVersion)
     fi
 }
 
@@ -91,11 +91,11 @@ save_sing_version() {
     version=$2
     if [ "$branches" == latest ]
     then
-        echo "$version" > ./singboxLocaLatestVersion
+        echo "$version" > ./tmp/singboxLocaLatestVersion
     fi
     if [ "$branches" == dev-next ]
     then
-        echo "$version" > ./singboxLocalDevNextVersion
+        echo "$version" > ./tmp/singboxLocalDevNextVersion
     fi
 }
 
