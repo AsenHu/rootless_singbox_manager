@@ -13,6 +13,12 @@
 mkdir -p ~/SINGBOX && cd ~/SINGBOX && bash <(curl https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/builder.sh)
 ```
 
+第三方
+
+```
+mkdir -p ~/SINGBOX && cd ~/SINGBOX && bash <(curl https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/reF1nd_builder.sh)
+```
+
 脚本有两个参数 `--branches=xxx` 和 `--tags=xxx`，可以简写为 `-b=xxx` `-t=xxx`。branches 有两个选项 latest 和 dev-next，默认前者，tags 默认除了需要 cgo 和 ssr 的所有 tag。
 
 默认的命令与这个等效
