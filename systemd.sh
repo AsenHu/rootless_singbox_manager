@@ -60,11 +60,12 @@ check_update() {
         chmod +x "$dir/systemd.sh"
     else
         latest_scr_VERSION=$(curl -sL https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/systemd_version.txt)
-        local_scr_VERSION=1.0.0
+        local_scr_VERSION=1.0.1
         if [ "$latest_scr_VERSION" != "$local_scr_VERSION" ]
         then
-            rm -rf "$dir/systemd.sh"
-            curl -o "$dir/systemd.sh" https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/systemd.sh
+            rm -rf "$dir/tmp_systemd.sh"
+            curl -o "$dir/tmp_systemd.sh" https://raw.githubusercontent.com/AsenHu/rootless_singbox_manager/main/systemd.sh
+            mv -f tmp_systemd.sh systemd.sh
             chmod +x "$dir/systemd.sh"
         fi
     fi
