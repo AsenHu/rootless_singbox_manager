@@ -1,5 +1,8 @@
-# rootless_singbox_manager
+开摆！
 
+https://github.com/chise0713/sing-box-install
+
+# rootless_singbox_manager
 
 ## singbox 自动构建 builder.sh
 
